@@ -1,0 +1,117 @@
+body {
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+body:after {
+    content: "";
+    position: fixed; /* stretch a fixed position to the whole screen */
+    top: 0;
+    height: 100vh; /* fix for mobile browser address bar appearing disappearing */
+    left: 0;
+    right: 0;
+    z-index: -2; /* needed to keep in the background */
+    background: url("../images/xmas-turkey.jpg") center center;
+    background-size: cover;
+}
+
+/* Navigation bar styling */
+.navbar {
+    padding: 5px;
+}
+
+.navbar-brand img {
+    height: 25px;
+    width: 25px;
+}
+
+.navbar-brand-text {
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+
+/* Color management */
+.opaque-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index:-1;
+    height: 100vh;
+    width: 100%;
+}
+
+.fnt-clr-white {
+    color: rgba(208,203,203,1);
+}
+
+img {
+    color: white;
+}
+
+/* Footer styling */
+.footer-position {
+    margin-top: auto !important;
+}
+
+.readme-link,
+.footer-links li a i {
+    color: rgba(228,84,84,1);
+    font-size: 25px;
+    text-align: center;
+    padding: 0px;
+    width: 35px;
+    height: 35px;
+}
+
+
+/* Media queries */
+@media (min-width:388px) {
+
+    .navbar-brand img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .navbar-brand-text {
+        vertical-align: middle;
+        font-size: 17.5px;
+    }
+}
+
+@media (min-width:768px) {
+    
+    .section-headings {
+        font-size: 32px;
+    }
+}
+
+@media (min-width:992px){
+    
+    .readme-link,
+    .footer-links li a i {
+        color: rgba(208,203,203,1);
+        font-size: 25px;
+        text-align: center;
+        padding: 5px;
+        width: 40px;
+        height: 40px;
+        transition: all 0.35s ease-in-out;
+        -o-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        -webkit-transition: all 0.35s ease-in-out;
+    }
+    
+    .readme-link:hover,
+    .footer-links li a i:hover {
+        color: rgba(228,84,84,1);
+    }
+    
+    

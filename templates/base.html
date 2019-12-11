@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css"/>
+
+    <title>Milly's Kitchen</title>
+</head>
+
+
+<body>
+
+
+     <!-- Navigation -->
+    <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <a class="navbar-brand" href="{{ url_for('get_meals') }}">
+            <img src="{{ url_for('static', filename='images/kitchen-logo.jpg') }}" alt="Kitchen Logo">
+            <span class="navbar-brand-text">Milly's Kitchen</span>
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('get_meals') }}">Home</a></li>
+                     <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('get_starters') }}">Starters</a></li>
+                      <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('get_mains') }}">Main Courses</a></li>
+                      <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('get_desserts') }}">Desserts</a></li>
+                      <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('get_sides') }}">Trimmings & Sides</a></li>
+                      <li class="nav-item"> 
+                <a class="nav-link" href="{{ url_for('add_meal') }}">Add Recipe</a></li>
+            </ul>
+        </div>
+     </nav>
+    </header>
+
+     
+    
+     {% block content %}
+     {% endblock %}
+
+     <!-- Footer for website -->
+    <footer class="container-fluid footer-position bg-dark">
+        <div class="row top-margin">
+            <div class="col-sm-4">
+                <h5 class="fnt-clr-white">Developer</h5>
+                <p>This site has been created by Darragh Martin </p>
+            </div>
+            <div class="col-sm-4">
+                <h5 class="fnt-clr-white">Disclaimer</h5>
+                <p>This site is created for education purposes only.</p>
+            </div>
+            <div class="col-sm-4">
+                <h5 class="fnt-clr-white">Social Media</h5>
+                <p>Folow us on social media:</p>
+                <ul class="list-inline footer-links">
+                    <li class="list-inline-item">
+                        <a target="_blank" aria-label="Link to Facebook" rel="noopener" href="https://www.facebook.com/">
+                            <i class="fab fa-facebook" aria-hidden="true"></i>
+                            <span class="sr-only">Facebook</span>
+                    </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a target="_blank" aria-label="Link to Twitter" rel="noopener" href="https://twitter.com/">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                            <span class="sr-only">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a target="_blank" aria-label="Link to YouTube" rel="noopener" href="https://www.youtube.com/">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                            <span class="sr-only">YouTube</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a target="_blank" aria-label="Link to Instagram" rel="noopener" href="https://instagram.com/">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                            <span class="sr-only">Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+ 
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
