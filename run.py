@@ -13,46 +13,80 @@ app.config["MONGO_URI"] = 'mongodb+srv://daradona10:maradona1986@myfirstcluster-
 mongo = PyMongo(app)
 
 @app.route("/")
-@app.route('/get_meals')
 def get_meals():
-    return render_template("meals.html", recipes=mongo.db.recipes.find())
-
-@app.route('/add_recipe')
-def add_recipe():
-        course_type = mongo.db.course_type.find()
-        cooking_time = mongo.db.cooking_time.find()
-        return render_template('add_meal.html', course_type=course_type, cooking_time=cooking_time)
-
-@app.route('/insert_recipe', methods=["GET", "POST"])
-def insert_recipe():
-    recipes = mongo.db.recipes
-    recipes.insert_one( {
-        'recipe_name': request.form.get('recipe_name'),
-        'recipe_description' : request.form.get('recipe_description'),
-        'prep_time' : request.form.get('prep_time'),
-        'cooking_time' : request.form.get('cooking_time'),
-        'recipe_makes' : request.form.get('recipe_makes'),
-        'recipe_ingredients' : request.form.get('recipe_ingredients'),
-        'recipe_method' : request.form.get('recipe_method'),
-        'course_type' : request.form.get('course_type'),
-    })
-    return redirect(url_for('get_meals'))
-                             
-@app.route("/get_mains")
-def get_mains():
-    return render_template("maincourses.html", all_recipes = mongo.db.all_recipes.find())   
-
+    return render_template("meals.html")
+  
 @app.route("/get_starters")
 def get_starters():
-    return render_template("starters.html", all_recipes = mongo.db.all_recipes.find()) 
+    starters_dishes = mongo.db.recipes.find({"course_type": "starters"})
+    starters = []
+    for s in starters_dishes:
+        starters.append({
+            "name": s["name"],
+            "description": s["description"],
+            "prep_time": s["prep_time"],
+            "cooking_time": s["cooking_time"],
+            "makes": s["makes"],
+            "ingredients": s["ingredients"],
+            "method": s["method"],
+            "course_type": s["course_type"]
+        })
+    return render_template("starters.html", starters=starters)
+
+@app.route("/get_mains")
+def get_mains():
+    mains_dishes = mongo.db.recipes.find({"course_type": "main courses"})
+    mains = []
+    for s in mains_dishes:
+        mains.append({
+            "name": s["name"],
+            "description": s["description"],
+            "prep_time": s["prep_time"],
+            "cooking_time": s["cooking_time"],
+            "makes": s["makes"],
+            "ingredients": s["ingredients"],
+            "method": s["method"],
+            "course_type": s["course_type"]
+        })
+    return render_template("maincourses.html", mains=mains)
+
+
 
 @app.route("/get_desserts")
 def get_desserts():
-    return render_template("desserts.html", all_recipes = mongo.db.all_recipes.find())   
+    desserts_dishes = mongo.db.recipes.find({"course_type": "desserts"})
+    desserts = []
+    for s in desserts_dishes:
+        desserts.append({
+            "name": s["name"],
+            "description": s["description"],
+            "prep_time": s["prep_time"],
+            "cooking_time": s["cooking_time"],
+            "makes": s["makes"],
+            "ingredients": s["ingredients"],
+            "method": s["method"],
+            "course_type": s["course_type"]
+        })
+        
+    return render_template("desserts.html", desserts=desserts)  
 
 @app.route("/get_sides")
 def get_sides():
-    return render_template("sides.html", all_recipes = mongo.db.all_recipes.find())  
+    sides_dishes = mongo.db.recipes.find({"course_type": "sides"})
+    sides = []
+    for s in sides_dishes:
+        sides.append({
+            "name": s["name"],
+            "description": s["description"],
+            "prep_time": s["prep_time"],
+            "cooking_time": s["cooking_time"],
+            "makes": s["makes"],
+            "ingredients": s["ingredients"],
+            "method": s["method"],
+            "course_type": s["course_type"]
+        })
+        
+    return render_template("sides.html", sides=sides)  
 
 @app.route("/add_meal")
 def add_meal():
@@ -61,5 +95,5 @@ def add_meal():
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
+            port=5000,
             debug=True) 

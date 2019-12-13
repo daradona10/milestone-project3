@@ -1,4 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-        <h1>Desserts</h1>
+
+<div class="container">
+	<h1>Desserts</h1>
+	<div id="desserts-items-list">
+		
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+		var desserts = {{ desserts|tojson }};
+</script>
+
+<script src="{{url_for('.static', filename='js/desserts.js')}}"></script>
 {% endblock %}

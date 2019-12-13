@@ -1,16 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-   
-           {% for recipe in recipes %}
-            {{recipe.name}}
-            {{recipe.description}}
-            {{recipe.prep_time}}
-            {{recipe.cooking_time}}
-            {{recipe.makes}}
-            {{recipe.ingredients}}
-            {{recipe.method}}
-            {% endfor %}
-
+<section class="container-fluid index-container">
+		<div class="opaque-overlay"></div>
+		<div class="row justify-content-around">
+			<div class="col-11"></div>
+		</div>
+	</section>
 {% endblock %}

@@ -1,4 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-        <h1>Main Courses</h1>
+
+<div class="container">
+	<h1>Trimmings & Sides</h1>
+	<div id="mains-items-list">
+		
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+		var mains = {{ mains|tojson }};
+</script>
+
+<script src="{{url_for('.static', filename='js/mains.js')}}"></script>
 {% endblock %}
