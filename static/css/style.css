@@ -17,7 +17,7 @@ body:after {
     left: 0;
     right: 0;
     z-index: -2; /* needed to keep in the background */
-    background: url("../images/xmas-turkey.jpg") center center;
+    background-color: #fafafa; center center;
     background-size: cover;
 }
 
