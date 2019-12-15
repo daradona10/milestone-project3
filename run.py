@@ -90,7 +90,7 @@ def get_sides():
 
 @app.route("/add_meal")
 def add_meal():
-    return render_template("add_meal.html")       
+    return render_template("addmeal.html")      
 
 
 if __name__ == "__main__":
