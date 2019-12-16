@@ -119,6 +119,6 @@ def add_new_recipe():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0'
+    app.run(host=os.environ.get('0.0.0.0')
             port=(os.environ.get('PORT')),
             debug=True) 
