@@ -1,6 +1,6 @@
 # Milestone Project 3: Milly's Kitchen Christmas Recipes
 
-The deployed website can be accessed from here (Heroku): []
+The deployed website can be accessed from here (Heroku): [https://milestone-project3.herokuapp.com/]
 
 ## Goal of the website:
  
@@ -96,7 +96,7 @@ The style.css file was run through the Autoprefixer CSS Online tool.
 ## Deployment
 
 This project is deployed on Heroku and GitHub and is accessible as follows:
-- Website: [Heroku]
+- Website: [Heroku](https://milestone-project3.herokuapp.com/)
 - Repository: [GitHub](https://github.com/daradona10/milestone-project3)
 
 ## Credits
