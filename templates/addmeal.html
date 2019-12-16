@@ -1,59 +1,55 @@
 {% extends 'base.html' %}
 {% block content %}
-      
-        <div class="row" id="add-meal-form">
-                <form action="{{url_for('insert_meal')}}" method="POST" class="col s12">
-                <div class="row">
-                   <div class="input-field col s12">
-                       <select id="course type" name="course_type">
-                        <option value="" disabled selected>Choose Course Type</option>
-                        {% for course in courses %}
-                        <option value="{{course.courses_type}}">{{course.courses_type}}</option>
-                        {% endfor %}
-                     </select>
-                     <label>Course Type</label>
-                  </div>
-                </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <i class="material-icons prefix">add</i>
-                      <input id="course_type" name="course_type" type="text" class="validate">
-                      <label for="icon_prefix">Course Type</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <i class="material-icons prefix">add</i>
-                      <input id="name" name="name" type="text" class="validate">
-                      <label for="icon_prefix">Recipe Name</label>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="input-field col s12">
-                      <i class="material-icons prefix">add</i>
-                      <input id="description" name="description" type="text" class="validate">
-                      <label for="icon_prefix">Description</label>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="input-field col s12">
-                      <i class="material-icons prefix">add</i>
-                      <input id="ingredients" name="ingredients" type="text" class="validate">
-                      <label for="icon_prefix">Ingredients</label>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="input-field col s12">
-                      <i class="material-icons prefix">add</i>
-                      <input id="method" name="ingredients" type="text" name="name" class="validate">
-                      <label for="icon_prefix">Method</label>
-                    </div>
-                    </div>
-                  <div class="row">
-                     <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
-                       <i class="material-icons right">send</i>
-                     </button>
-                  </div>
-                </form>
-              </div>
+<h1>Add Recipes</h1>
+<div class="card col-sm-10 mt-2 mb-2 pt-4 pb-4" id="add-recipe-card">
+	<h4>Add Recipe</h4>
+	<hr/>
+	<br>
+	<form method='POST' action='/add_new_recipe'>
+		<div class="form-group">
+			<label for="exampleFormControlSelect1">Course Type</label>
+			<select class="form-control" id="course_types" name="course_type">
+				
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlInput1">Name</label>
+			<input type="text" class="form-control" id="recipe_name" name="recipe_name"  required>
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlInput1">Description</label>
+			<input type="text" class="form-control" id="description" name="description" required>
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlInput1">Prep Time</label>
+			<input type="text" class="form-control" id="prep_time" name="prep_time" required>
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlInput1">Cooking Time</label>
+			<input type="text" class="form-control" id="cooking_time" name="cooking_time" required>
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlInput1">Makes</label>
+			<input type="text" class="form-control" id="makes" name="makes" required>
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlInput1">Ingredients</label>
+			<input type="emtextail" class="form-control" id="ingredients" name="ingredients" required>
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlTextarea1">Method</label>
+			<textarea class="form-control" id="method" rows="3" name="method" required></textarea>
+		</div>
+		<br>
+		<button id="add-recipe-button-2" class="btn btn-primary" type="submit">Add Recipe</button>
+	</form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+		var course_types = {{ course_types|safe }};
+</script>
+
+<script src="{{url_for('.static', filename='js/add_meal.js')}}"></script>
 {% endblock %}

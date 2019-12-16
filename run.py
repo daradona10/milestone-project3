@@ -88,16 +88,35 @@ def get_sides():
         
     return render_template("sides.html", sides=sides)  
 
-@app.route("/add_meal")
+@app.route("/addmeal")
 def add_meal():
-    return render_template("addmeal.html",
-    course_type=mongo.db.course_type.find())      
+    course_types = mongo.db.recipes.find().distinct('course_type')
+    return render_template("addmeal.html", course_types=course_types)
 
-@app.route("/insert_meal", methods=["POST"])
-def insert_meal():
-    meals = mongo.db.meals
-    meals.insert_one(request.form.to_dict())
-    return redirect(url_for('get_meals'))
+@app.route("/add_new_recipe", methods=['GET', 'POST'])
+def add_new_recipe():
+    name = request.form.get('recipe_name')
+    description = request.form.get('description')
+    prep_time = request.form.get('prep_time')
+    cooking_time = request.form.get('cooking_time')
+    makes = request.form.get('makes')
+    ingredients = request.form.get('ingredients')
+    method = request.form.get('method')
+    course_type = request.form.get('course_type')
+    
+    mongo.db.recipes.insert_one({
+        'name': name,
+        'description': description,
+        'prep_time': prep_time,
+        'cooking_time': cooking_time,
+        'makes': makes,
+        'ingredients': ingredients,
+        'method': method,
+        'course_type': course_type
+    })
+
+    return redirect(url_for('addmeal'))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
