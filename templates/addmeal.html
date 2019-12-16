@@ -2,18 +2,57 @@
 {% block content %}
       
         <div class="row" id="add-meal-form">
-                <form action="" method="POST" class="col s12">
+                <form action="{{url_for('insert_meal')}}" method="POST" class="col s12">
+                <div class="row">
+                   <div class="input-field col s12">
+                       <select id="course type" name="course_type">
+                        <option value="" disabled selected>Choose Course Type</option>
+                        {% for course in courses %}
+                        <option value="{{course.courses_type}}">{{course.courses_type}}</option>
+                        {% endfor %}
+                     </select>
+                     <label>Course Type</label>
+                  </div>
+                </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <i class="material-icons prefix">account_circle</i>
-                      <input id="icon_prefix" type="text" class="validate">
-                      <label for="icon_prefix">First Name</label>
+                      <i class="material-icons prefix">add</i>
+                      <input id="course_type" name="course_type" type="text" class="validate">
+                      <label for="icon_prefix">Course Type</label>
                     </div>
+                  </div>
+                  <div class="row">
                     <div class="input-field col s12">
-                      <i class="material-icons prefix">phone</i>
-                      <input id="icon_telephone" type="tel" class="validate">
-                      <label for="icon_telephone">Telephone</label>
+                      <i class="material-icons prefix">add</i>
+                      <input id="name" name="name" type="text" class="validate">
+                      <label for="icon_prefix">Recipe Name</label>
                     </div>
+                    </div>
+                    <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">add</i>
+                      <input id="description" name="description" type="text" class="validate">
+                      <label for="icon_prefix">Description</label>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">add</i>
+                      <input id="ingredients" name="ingredients" type="text" class="validate">
+                      <label for="icon_prefix">Ingredients</label>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">add</i>
+                      <input id="method" name="ingredients" type="text" name="name" class="validate">
+                      <label for="icon_prefix">Method</label>
+                    </div>
+                    </div>
+                  <div class="row">
+                     <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
+                       <i class="material-icons right">send</i>
+                     </button>
                   </div>
                 </form>
               </div>

@@ -90,8 +90,14 @@ def get_sides():
 
 @app.route("/add_meal")
 def add_meal():
-    return render_template("addmeal.html")      
+    return render_template("addmeal.html",
+    course_type=mongo.db.course_type.find())      
 
+@app.route("/insert_meal", methods=["POST"])
+def insert_meal():
+    meals = mongo.db.meals
+    meals.insert_one(request.form.to_dict())
+    return redirect(url_for('get_meals'))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
