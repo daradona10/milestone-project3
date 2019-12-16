@@ -29,9 +29,9 @@ This website provides the relevant functionality to satisfy the requirements, in
 
 Wireframes for the mobile and desktop was done through Balsamiq. Both versions are listed below:
 
-   # Mobile: [here]
+   # Mobile: [here](https://github.com/daradona10/milestone-project3/blob/master/development/Milestone%20Project3-Mobile.pdf)
 
-   # Desktop: [here]
+   # Desktop: [here](https://github.com/daradona10/milestone-project3/blob/master/development/Milestone%20Project%203%20desktop.pdf)
 
 ### Design considerations:
 It was decided to style the website with a elegant and cosy feel:
@@ -97,7 +97,7 @@ The style.css file was run through the Autoprefixer CSS Online tool.
 
 This project is deployed on Heroku and GitHub and is accessible as follows:
 - Website: [Heroku]
-- Repository: [GitHub]
+- Repository: [GitHub](https://github.com/daradona10/milestone-project3)
 
 ## Credits
 
