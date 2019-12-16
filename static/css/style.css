@@ -17,7 +17,7 @@ body:after {
     left: 0;
     right: 0;
     z-index: -2; /* needed to keep in the background */
-    background-color: #fafafa; center center;
+    background-color: #62374E; center center;
     background-size: cover;
 }
 
@@ -41,6 +41,10 @@ body:after {
 .headings {
     padding-top: 50px;
     font-weight: 600;
+    color: #fafafa;
+}
+
+.headings-text {
     color: #fafafa;
 }
 
