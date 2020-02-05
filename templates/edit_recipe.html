@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="card col-sm-10 mt-2 mb-2 pt-4 pb-4" id="add-recipe-card">
-	<h4>Add Recipe</h4>
+	<h4>Edit Recipe</h4>
 	<hr/>
 	<br>
-	<form method='POST' action='/add_new_recipe' enctype=multipart/form-data>
+	<form method='POST' action="{{url_for('edit_single_recipe', recipe_id=recipe._id)}}"  enctype=multipart/form-data>
 		<div class="form-group">
 			<label for="exampleFormControlSelect1">Course Type</label>
 			<select class="form-control" id="course_types" name="course_type">
@@ -19,34 +19,42 @@
 	  	</div>
 		<div class="form-group">
 			<label for="exampleFormControlInput1">Name</label>
-			<input type="text" class="form-control" id="recipe_name" name="recipe_name"  required>
+			<input type="text" class="form-control" id="recipe_name" name="recipe_name"  value="{{ recipe.name }}" required>
 		</div>
 		<div class="form-group">
 			<label for="exampleFormControlInput1">Description</label>
-			<input type="text" class="form-control" id="description" name="description" required>
+			<input type="text" class="form-control" id="description" name="description" value="{{ recipe.description }}" required>
 		</div>
 		<div class="form-group">
 			<label for="exampleFormControlInput1">Prep Time</label>
-			<input type="text" class="form-control" id="prep_time" name="prep_time" required>
+			<input type="text" class="form-control" id="prep_time" name="prep_time" value="{{ recipe.prep_time }}"  required>
 		</div>
 		<div class="form-group">
 			<label for="exampleFormControlInput1">Cooking Time</label>
-			<input type="text" class="form-control" id="cooking_time" name="cooking_time" required>
+			<input type="text" class="form-control" id="cooking_time" name="cooking_time" value="{{ recipe.cooking_time }}" required>
 		</div>
 		<div class="form-group">
 			<label for="exampleFormControlInput1">Makes</label>
-			<input type="text" class="form-control" id="makes" name="makes" required>
+			<input type="text" class="form-control" id="makes" name="makes" value="{{ recipe.makes }}" required>
 		</div>
 		<div class="form-group">
 			<label for="exampleFormControlInput1">Ingredients</label>
-			<input type="emtextail" class="form-control" id="ingredients" name="ingredients" required>
+			<input type="emtextail" class="form-control" id="ingredients" name="ingredients" value="{{ recipe.ingredients }}" required>
 		</div>
 		<div class="form-group">
 			<label for="exampleFormControlTextarea1">Method</label>
-			<textarea class="form-control" id="method" rows="3" name="method" required></textarea>
+			<textarea class="form-control" id="method" rows="3" name="method" required>{{ recipe.method }}</textarea>
 		</div>
 		<br>
-		<button id="add-recipe-button-2" class="btn btn-primary" type="submit">Add Recipe</button>
+		<button id="add-recipe-button-2" class="btn btn-primary" type="submit">Save Recipe</button>
 	</form>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+		var course_types = {{ course_types|safe }};
+</script>
+
+<script src="{{url_for('.static', filename='js/add_meal.js')}}"></script>
 {% endblock %}

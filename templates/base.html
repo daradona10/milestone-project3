@@ -26,7 +26,7 @@
             <span class="navbar-brand-text">Milly's Kitchen</span>
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
+           Menu
           <i class="fa fa-bars"></i>
         </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -36,7 +36,7 @@
                      <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('get_starters') }}">Starters</a></li>
                       <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('get_mains') }}">Mains</a></li>
+                <a class="nav-link" href="{{ url_for('get_mains') }}">Main Courses</a></li>
                       <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('get_desserts') }}">Desserts</a></li>
                       <li class="nav-item">
@@ -48,8 +48,147 @@
      </nav>
     </header>
 
-     
-    
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this dish?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+              <button id="modal-delete-button" type="button" class="btn btn-primary btn-sm">Delete</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Edit Dish</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form method='POST' action='/edit_recipe'>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Course Type</label>
+                        <select class="form-control" id="course_types_edit" name="course_types_edit">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Name</label>
+                        <input type="text" class="form-control" id="recipe_name_edit" name="recipe_name_edit"  required>
+                    </div>
+                    <div class="form-group" style="display: none;">
+                        <label for="exampleFormControlInput1">Dish ID</label>
+                        <input type="text" class="form-control" id="dish_id_edit" name="dish_id_edit" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Description</label>
+                        <input type="text" class="form-control" id="description_edit" name="description_edit" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Prep Time</label>
+                        <input type="text" class="form-control" id="prep_time_edit" name="prep_time_edit" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Cooking Time</label>
+                        <input type="text" class="form-control" id="cooking_time_edit" name="cooking_time_edit" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Makes</label>
+                        <input type="text" class="form-control" id="makes_edit" name="makes_edit" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Ingredients</label>
+                        <input type="emtextail" class="form-control" id="ingredients_edit" name="ingredients_edit" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Method</label>
+                        <textarea class="form-control" id="method_edit" rows="3" name="method_edit" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+              <button id="modal-edit-button" type="button" class="btn btn-primary btn-sm">Save</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+     <div class="container">
+        <h1>.</h1>
+        <div id="desserts-items-list">
+            {% for dish in dishes %}
+                <div class="card" style="width: 100%; float: left; margin-top: 2rem; margin-left: 2rem; margin-bottom: 2rem;">
+                   <div class="card-body">
+                      <div>
+                         <h5 class="card-title each_name" style="float: left;">{{ dish.name }}</h5>
+                          <a href="{{url_for('delete_recipe', recipe_id=dish.dish_id)}}"><button style="float:right; margin-bottom: 10px; margin-left: 10px;" class="btn btn-primary btn-sm" data-dish-type="{{ dish.course_type }}" data-dish-id="{{ dish.dish_id }}">Delete</button></a>
+
+                          <a href="{{url_for('edit_recipe', recipe_id=dish.dish_id)}}"><button style="float:right; margin-bottom: 10px;" class="btn btn-primary btn-sm" data-dish-type="{{ dish.course_type }}" data-dish-id="{{ dish.dish_id }}">Edit</button></a>
+                         <p class="card-text"></p>
+                      </div>
+                       <br/>
+                       <table class="table table-bordered">
+                           <tr rowspan="2">
+                               <td>
+                                   {% if dish.image_path %}
+                                        <img src="{{ dish.image_path }}" style="width: 40em; height: 30em;">
+                                   {% else %}
+                                        <img src="https://daradona-milestone-project3.s3.amazonaws.com/recipe_images/placeholder-image.jpg" style="width: 50em; height: 30em;">
+                                   {% endif %}
+                               </td>
+                           </tr>
+                       </table>
+                      <table class="table table-bordered">
+                         <tbody>
+                            <tr>
+                                <th>Course Type</th>
+                                <td class="each_course_type">{{ dish.course_type }}</td>
+                            </tr>
+                            <tr>
+                               <th>Prep Time</th>
+                               <td class="each_prep_time">{{ dish.prep_time }}</td>
+                            </tr>
+                            <tr>
+                               <th>Cooking Time</th>
+                               <td class="each_cooking_time">{{ dish.cooking_time }}</td>
+                            </tr>
+                            <tr>
+                               <th>Ingredients</th>
+                               <td class="each_ingredient">{{ dish.ingredients }}</td>
+                            </tr>
+                            <tr>
+                               <th>Makes</th>
+                               <td class="each_makes">{{ dish.makes }}</td>
+                            </tr>
+                            <tr>
+                               <th>Description</th>
+                               <td class="each_prep_description">{{ dish.description }}</td>
+                            </tr>
+                            <tr>
+                               <th>Method</th>
+                               <td class="each_method">{{ dish.method }}</td>
+                            </tr>
+                         </tbody>
+                      </table>
+                      <p></p>
+                   </div>
+                </div>
+            {% endfor %}
+        </div>
+     </div>
      {% block content %}
      {% endblock %}
 
@@ -97,15 +236,10 @@
         </div>
     </footer>
 
- 
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="{{url_for('.static', filename='js/jquery.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <!-- <script type="text/javascript" src="{{url_for('.static', filename='js/desserts.js')}}"></script> -->
-
-    
+    <script src="{{url_for('.static', filename='js/helper.js')}}"></script>
     
     {% block scripts %}
     {% endblock %}

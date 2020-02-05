@@ -1,18 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container">
-	<h1>Starters</h1>
-	<div id="starters-items-list">
-		
-	</div>
-</div>
 {% endblock %}
 
-{% block scripts %}
-<script>
-		var starters = {{ starters|tojson }};
-</script>
+<!--{% block scripts %}-->
+<!--<script>-->
+		<!--var dishes = {{ dishes|tojson }};-->
+		<!--var course_types = {{ course_types|safe }};-->
+<!--</script>-->
 
-<script src="{{url_for('.static', filename='js/starters.js')}}"></script>
-{% endblock %}
+<!--<script src="{{url_for('.static', filename='js/starters.js')}}"></script>-->
+<!--{% endblock %}-->

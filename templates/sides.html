@@ -1,18 +1,13 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
-<div class="container">
-	<h1>Trimmings & Sides</h1>
-	<div id="sides-items-list">
-		
-	</div>
-</div>
 {% endblock %}
 
-{% block scripts %}
-<script>
-		var sides = {{ sides|tojson }};
-</script>
-
-<script src="{{url_for('.static', filename='js/sides.js')}}"></script>
-{% endblock %}
+<!--{% block scripts %}-->
+<!--<script>-->
+		<!--var dishes = {{ dishes|tojson }};-->
+		<!--var course_types = {{ course_types|safe }};-->
+<!--</script>-->
+<!--<script src="{{url_for('.static', filename='js/sides.js')}}"></script>-->
+<!--{% endblock %}-->
