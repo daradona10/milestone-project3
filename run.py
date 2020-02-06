@@ -20,13 +20,13 @@ def get_meals():
 
 @app.route("/get_mains")
 def get_mains():
-    starters = get_recipes_by_type('main courses')
+    starters = get_recipes_by_type('Main Courses')
     course_types = get_course_types()
     return render_template("maincourses.html", dishes=starters, course_types=course_types)
 
 
 def get_course_types():
-    return ['starters', 'main courses', 'sides', 'desserts']
+    return ['Starters', 'Main Courses', 'Sides', 'Desserts']
 
 
 def get_recipes_by_type(recipe_type):
@@ -52,21 +52,21 @@ def get_recipes_by_type(recipe_type):
 
 @app.route("/get_starters")
 def get_starters():
-    starters = get_recipes_by_type('starters')
+    starters = get_recipes_by_type('Starters')
     course_types = get_course_types()
     return render_template("starters.html", dishes=starters, course_types=course_types)
 
 
 @app.route("/get_desserts")
 def get_desserts():
-    desserts = get_recipes_by_type('desserts')
+    desserts = get_recipes_by_type('Desserts')
     course_types = get_course_types()
     return render_template("desserts.html", dishes=desserts, course_types=course_types)
 
 
 @app.route("/get_sides")
 def get_sides():
-    sides = get_recipes_by_type('sides')
+    sides = get_recipes_by_type('Sides')
     course_types = get_course_types()
     return render_template("sides.html", dishes=sides, course_types=course_types)
 
@@ -101,6 +101,12 @@ def add_new_recipe():
     ingredients = request.form.get('ingredients')
     method = request.form.get('method')
     course_type = request.form.get('course_type')
+
+    print('--------------------------------')
+    # method = method.replace('\n', '<br/>')
+    print(method)
+    print('--------------------------------')
+    return redirect(url_for('add_meal'))
 
     f = request.files['file_name']
     if f:
@@ -140,11 +146,11 @@ def delete_recipe(recipe_id):
     })
 
     template = 'get_sides'
-    if course_type == 'starters':
+    if course_type == 'Starters':
         template = 'get_starters'
-    elif course_type == 'main courses':
+    elif course_type == 'Main Courses':
         template = 'get_mains'
-    elif course_type == 'desserts':
+    elif course_type == 'Desserts':
         template = 'get_desserts'
 
     return redirect(url_for(template))
@@ -207,11 +213,11 @@ def edit_single_recipe(recipe_id):
     mongo.db.recipes.update_one(myquery, newvalues)
 
     template = 'get_sides'
-    if course_type == 'starters':
+    if course_type == 'Starters':
         template = 'get_starters'
-    elif course_type == 'main courses':
+    elif course_type == 'Main Courses':
         template = 'get_mains'
-    elif course_type == 'desserts':
+    elif course_type == 'Desserts':
         template = 'get_desserts'
 
     return redirect(url_for(template))
