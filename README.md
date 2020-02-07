@@ -2,6 +2,10 @@
 
 The deployed website can be accessed from here (Heroku): [https://milestone-project3.herokuapp.com/]
 
+## Note for Code Institute assessor:
+
+Please do not edit or delete any of the featured recipes but please feel free to add a few to implement and then delete when finished. Thanks. 
+
 ## Goal of the website:
  
 The website is to create a web application that allows users to view some of the recipes but also to add their own to the database and also to make some changes by
@@ -59,6 +63,9 @@ This site is limited to the use of HMTL, CSS, JavaScript, Flask, Python and Mong
 ### Features Left to Implement
 - Feature A - Images for the recipes
 - Feature B - Newsletter sign up to stay informed of new additions, improved functionality.
+- Feature C - To have comments below each recipe to allow others to give their views on it.
+- Feature D - To have external links as to where to buy hard to find ingredients.
+- Feature E - To have some links with suppliers to offer discounts to the users of the website.
 
 # Technologies Used
 
@@ -89,7 +96,7 @@ The following languages, frameworks, libraries, IDE, repositories and tools were
 Testing for this site was performed as follows:
 
 ### Code Validation:
-The index.html file was not passed through the W3C HTML Validation site, due to the use of the Flask Framwork, many errors and warnings raised.
+The index.html file was not passed through the W3C HTML Validation site, due to the use of the Flask Framwork.
 The style.css file was tested using the W3C CSS Validation site, with no errors reported.
 The style.css file was run through the Autoprefixer CSS Online tool.
 
