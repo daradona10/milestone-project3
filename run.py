@@ -102,12 +102,6 @@ def add_new_recipe():
     method = request.form.get('method')
     course_type = request.form.get('course_type')
 
-    print('--------------------------------')
-    # method = method.replace('\n', '<br/>')
-    print(method)
-    print('--------------------------------')
-    return redirect(url_for('add_meal'))
-
     f = request.files['file_name']
     if f:
         file_path = os.path.join(UPLOAD_FOLDER, f.filename)
@@ -224,4 +218,4 @@ def edit_single_recipe(recipe_id):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=(os.environ.get('PORT')), debug=True) 
+    app.run(host='0.0.0.0', port=(os.environ.get('PORT')), debug=True)
