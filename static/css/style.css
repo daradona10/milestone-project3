@@ -78,6 +78,8 @@ section {
     z-index:-1;
     height: 100vh;
     width: 100%;
+    background-image: url('https://daradona-milestone-project3.s3.amazonaws.com/recipe_images/recipe-background.jpg');
+    background-repeat: no-repeat;
 }
 
 .border-box {
