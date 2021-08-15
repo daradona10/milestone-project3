@@ -9,5 +9,5 @@ itsdangerous==1.1.0
 jmespath==0.9.4
 pymongo==3.10.0
 s3transfer==0.3.2
-urllib3==1.25.8
+urllib3==1.26.5
 Werkzeug==0.16.0
